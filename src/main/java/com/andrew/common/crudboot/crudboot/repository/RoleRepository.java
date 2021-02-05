@@ -1,6 +1,6 @@
-package com.andrew.common.crudboot.crudboot.DAO;
+package com.andrew.common.crudboot.crudboot.repository;
 
-import com.andrew.common.crudboot.crudboot.Model.Role;
+import com.andrew.common.crudboot.crudboot.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.HashSet;

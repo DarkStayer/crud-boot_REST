@@ -1,6 +1,6 @@
-package com.andrew.common.crudboot.crudboot.Service;
+package com.andrew.common.crudboot.crudboot.service;
 
-import com.andrew.common.crudboot.crudboot.Model.User;
+import com.andrew.common.crudboot.crudboot.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;

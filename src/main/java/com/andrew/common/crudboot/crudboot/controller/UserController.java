@@ -1,7 +1,7 @@
-package com.andrew.common.crudboot.crudboot.Controller;
+package com.andrew.common.crudboot.crudboot.controller;
 
-import com.andrew.common.crudboot.crudboot.Model.User;
-import com.andrew.common.crudboot.crudboot.Service.UserService;
+import com.andrew.common.crudboot.crudboot.model.User;
+import com.andrew.common.crudboot.crudboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

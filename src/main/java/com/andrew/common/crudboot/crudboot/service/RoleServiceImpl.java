@@ -1,7 +1,7 @@
-package com.andrew.common.crudboot.crudboot.Service;
+package com.andrew.common.crudboot.crudboot.service;
 
-import com.andrew.common.crudboot.crudboot.DAO.RoleRepository;
-import com.andrew.common.crudboot.crudboot.Model.Role;
+import com.andrew.common.crudboot.crudboot.repository.RoleRepository;
+import com.andrew.common.crudboot.crudboot.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.andrew.common.crudboot.crudboot.Config;
+package com.andrew.common.crudboot.crudboot.config;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

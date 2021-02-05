@@ -1,6 +1,6 @@
-package com.andrew.common.crudboot.crudboot.Service;
+package com.andrew.common.crudboot.crudboot.service;
 
-import com.andrew.common.crudboot.crudboot.Model.Role;
+import com.andrew.common.crudboot.crudboot.model.Role;
 
 import java.util.Set;
 

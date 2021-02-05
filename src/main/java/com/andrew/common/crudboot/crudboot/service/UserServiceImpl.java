@@ -1,12 +1,13 @@
-package com.andrew.common.crudboot.crudboot.Service;
+package com.andrew.common.crudboot.crudboot.service;
 
-import com.andrew.common.crudboot.crudboot.DAO.UserRepository;
-import com.andrew.common.crudboot.crudboot.Model.Role;
-import com.andrew.common.crudboot.crudboot.Model.User;
+import com.andrew.common.crudboot.crudboot.repository.UserRepository;
+import com.andrew.common.crudboot.crudboot.model.Role;
+import com.andrew.common.crudboot.crudboot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -21,10 +22,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public void addUser(User user) {
         if (user.getId()==0){
             user.setRoles(new HashSet<>(Collections.singleton(new Role(1L, "ROLE_USER"))));
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userRepository.save(user);
         }
         userRepository.save(user);
