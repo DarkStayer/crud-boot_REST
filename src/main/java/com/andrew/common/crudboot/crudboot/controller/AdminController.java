@@ -36,12 +36,8 @@ public class AdminController {
         List<User> allUser = userService.getAllUsers();
         modelAndView.setViewName("admin_page");
         modelAndView.addObject("listUser", allUser);
-        User user = new User();
-        modelAndView.addObject("user", user);
-        Set <Role> roleSet = new HashSet<>();
-        roleSet.add(Role.USER);
-        roleSet.add(Role.ADMIN);
-        modelAndView.addObject("roleSet", roleSet);
+        modelAndView.addObject("user", new User ());
+        modelAndView.addObject("roleSet", Role.allRoles());
         return modelAndView;
     }
 

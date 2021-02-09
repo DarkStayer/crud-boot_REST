@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void addUser(User user) {
-        if (user.getId()==0){
+        if (user.getId()==0&user.getRoles()==null){
             Set <Role> roleSet = new HashSet<>();
             roleSet.add(Role.USER);
             user.setRoles(roleSet);
