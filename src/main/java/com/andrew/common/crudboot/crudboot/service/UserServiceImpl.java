@@ -9,8 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +27,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void addUser(User user) {
         if (user.getId()==0){
-            user.setRoles(new HashSet<>(Collections.singleton(new Role(1L, "ROLE_USER"))));
+            Set <Role> roleSet = new HashSet<>();
+            roleSet.add(Role.USER);
+            user.setRoles(roleSet);
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userRepository.save(user);
         }
@@ -52,8 +53,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        User user = userRepository.findUserByName(name);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findUserByUsername(username);
         if (user==null){
             throw new UsernameNotFoundException("User not found");
         }

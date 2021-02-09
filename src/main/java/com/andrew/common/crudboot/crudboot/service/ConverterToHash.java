@@ -14,13 +14,11 @@ public class ConverterToHash implements Converter<String [], Set<Role>> {
     public Set<Role> convert(String [] role) {
         Set<Role> setRoles = new HashSet<>();
         for (String st : role) {
-            if (st.equals("ROLE_ADMIN")) { ;
-                Role role_admin = new Role(2L, "ROLE_ADMIN");
-                setRoles.add(role_admin);
+            if (st.equals("ADMIN")) { ;
+                setRoles.add(Role.ADMIN);
             }
-            if (st.equals("ROLE_USER")) {
-                Role role_user = new Role(1L, "ROLE_USER");
-                setRoles.add(role_user);
+            if (st.equals("USER")) {
+                setRoles.add(Role.USER);
             }
         }
         return setRoles;

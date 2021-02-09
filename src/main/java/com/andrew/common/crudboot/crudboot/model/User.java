@@ -15,24 +15,29 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+    private String firstName;
 
     private String lastName;
 
-    private byte age;
+    private Byte age;
 
     private String password;
 
-    @ManyToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
+    private String username;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public User(String name, String lastName, byte age) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
+    public User() {
     }
 
-    public User() {
+    public User(String firstName, String lastName, Byte age, String username) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.username = username;
     }
 
     public long getId() {
@@ -43,12 +48,12 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 
     public String getLastName() {
@@ -59,11 +64,11 @@ public class User implements UserDetails {
         this.lastName = lastName;
     }
 
-    public byte getAge() {
+    public Byte getAge() {
         return age;
     }
 
-    public void setAge(byte age) {
+    public void setAge(Byte age) {
         this.age = age;
     }
 
@@ -79,9 +84,13 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
-        return "Username= " + name + ", lastName is= " + lastName + ", age is " + age;
+        return "Firstname= " + firstName + ", lastName is= " + lastName + ", age is " + age;
     }
 
     @Override
@@ -96,7 +105,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return username;
     }
 
     @Override
