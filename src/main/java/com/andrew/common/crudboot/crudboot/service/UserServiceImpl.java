@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     PasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    ConverterToHash converterToHash;
+
     @Override
     public void addUser(User user) {
         if (user.getId()==0&user.getRoles()==null){
@@ -33,6 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userRepository.save(user);
         }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
